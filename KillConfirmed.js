@@ -139,11 +139,29 @@ function repositionAndChangeImages(characters, images) {
   });
 }
 
+const playHitSound = () => {
+  const hitSound = new Audio("audio/hit.mp3");
+  console.log("golpe");
+  hitSound.play();
+};
+
+const playShootSound = () => {
+  const shootSound = new Audio("audio/shot.mp3");
+  console.log("disparo");
+  shootSound.play();
+};
+
 // Manejar clics en personajes
 function handleCharacterClick(event) {
+  playShootSound();
   if (event.target.classList.contains("enemy")) {
+    console.log("enemigo golpeado");
+    playHitSound();
     gameState.score += 10;
+    document.title = `Kill Confirmed | Score: ${score}`;
   } else if (event.target.classList.contains("ally")) {
+    console.log("aliado golpeado");
+    playHitSound();
     gameState.lives -= 1;
   }
   updateUI();
@@ -152,6 +170,18 @@ function handleCharacterClick(event) {
     endGame("defeat");
   }
 }
+
+// Musika
+const toggleAudio = document.getElementById("toggleAudio");
+const audioPlayer = document.getElementById("audioPlayer");
+
+toggleAudio.addEventListener("change", () => {
+  if (toggleAudio.checked) {
+    audioPlayer.play();
+  } else {
+    audioPlayer.pause();
+  }
+});
 
 // Crear una imagen temporal de disparo en la esquina inferior derecha
 function createImageOnClick(event) {
@@ -176,12 +206,17 @@ function endGame(outcome) {
   clearInterval(gameState.intervalId);
   clearInterval(gameState.moveIntervalId);
 
+  const playVictorySound = new Audio("audio/victory.mp3");
+  const playDefeatSound = new Audio("audio/defeat.mp3");
+
   if (outcome === "victory") {
     document.getElementById("finalScore").innerText = gameState.score;
     showPage("victory-page");
+    playVictorySound.play();
   } else {
     document.getElementById("finalScoreDefeat").innerText = gameState.score;
     showPage("defeat-page");
+    playDefeatSound.play();
   }
 }
 
