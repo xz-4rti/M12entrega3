@@ -92,7 +92,7 @@ body {
 .timer,
 .lives {
   font-weight: bold;
-  color: #39FF14;
+  color: #39ff14;
 }
 
 .game-area {
@@ -141,7 +141,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
-  background-color: #39FF14;
+  background-color: #39ff14;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -193,7 +193,7 @@ button:active {
 }
 
 .start-page #startGameButton {
-  background-color: #39FF14;
+  background-color: #39ff14;
 }
 
 .rules-page #backToStartButton,
@@ -220,9 +220,8 @@ button:active {
   background-color: #dc3545;
 }
 
-
 .victory-page #playAgainButton {
-  background-color: #39FF14;
+  background-color: #39ff14;
   font-family: "Jersey 10", serif;
   font-weight: 400;
   font-style: normal;
@@ -236,7 +235,6 @@ button:active {
   font-style: normal;
   font-size: 32px;
 }
-
 
 .rules-page button {
   margin-left: 0;
@@ -275,14 +273,13 @@ button:active {
   }
 }
 
-
 body,
 button,
 img,
 a,
 .game-page,
 .character {
-  cursor: url('./image/cruceta.png') 32 32, default;
+  cursor: url("./image/cruceta.png") 32 32, default;
 }
 
 .victory-page {
@@ -294,7 +291,6 @@ a,
   color: #dc3545;
   text-align: center;
 }
-
 
 .tuPuntuacionDerrota {
   color: #ffffff;
@@ -316,7 +312,7 @@ a,
   color: #ffffff;
   text-align: center;
   background-color: #333333;
-  border: 4px solid #39FF14;
+  border: 4px solid #39ff14;
   border-radius: 10px;
   padding: 10px;
   margin: 10px auto;
@@ -326,4 +322,61 @@ a,
   font-weight: 400;
   font-style: normal;
   font-size: 32px;
+}
+
+/* mute button */
+.box {
+  --color: white;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+  right: 50px;
+  top: 50px;
+}
+
+.box .mute {
+  position: absolute;
+  animation: keyframes-fill 0.5s;
+}
+
+.box .voice {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+
+/* ------ On check event ------ */
+.box input:checked ~ .mute {
+  display: none;
+}
+
+.box input:checked ~ .voice {
+  display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.box input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(-10deg) scale(1.2);
+  }
 }
