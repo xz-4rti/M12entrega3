@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kill Confirmed</title>
+    <link rel="stylesheet" href="KillConfirmed.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Jersey+10&family=Jersey+15&family=Jost:wght@300&family=Platypi:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sedan:ital@0;1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="start-page page">
+            <button id="nextScreenButton">Comenzar</button>
+        </div>
+
+        <div class="rules-page page">
+            <button id="backToStartButton">Volver</button>
+            <button id="startGameButton">Jugar</button>
+        </div>
+
+        <div class="game-page page">
+            <div class="game-header">
+                <div class="score">
+                    Puntos: <span id="scoreCounter">0</span>
+                </div>
+                <div class="timer">
+                    Tiempo: <span id="timeCounter">60</span>s
+                </div>
+                <div class="lives">
+                    Vidas: <span id="livesCounter">3</span>
+                </div>
+            </div>
+            <div class="game-area">
+                <div class="character enemy" style="top: 50px; left: 100px;">
+                </div>
+                <div class="character ally" style="top: 150px; left: 300px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="victory-page page">
+            <p class="tuPuntuacionVictoria">Tu puntuación: <span id="finalScore"></span></p>
+            <button id="playAgainButton">Jugar de Nuevo</button>
+        </div>
+
+        <div class="defeat-page page">
+            <p class="tuPuntuacionDerrota">Tu puntuación: <span id="finalScoreDefeat"></span></p>
+            <button id="retryButton">Intentar de Nuevo</button>
+        </div>
+    </div>
+</body>
+<script src="./KillConfirmed.js"></script>
+
+</html>

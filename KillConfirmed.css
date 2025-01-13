@@ -1,0 +1,329 @@
+body {
+  background-image: url("image/background.png");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.container .page {
+  margin: 0 auto;
+  margin-top: 15vh;
+  width: 60vw;
+  max-width: 60vw;
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+  display: none;
+  border-radius: 5%;
+  position: relative;
+}
+
+.container .page.start-page {
+  background-image: url("image/start.png");
+  display: block;
+}
+
+.container .page.rules-page {
+  background-image: url("image/rules.png");
+}
+
+.container .page.game-page {
+  background-image: url("image/backgroundGame.png");
+}
+
+.container .page.victory-page {
+  background-image: url("image/victoryy.png");
+}
+
+.container .page.defeat-page {
+  background-image: url("image/defeat.png");
+}
+
+@media screen and (max-width: 768px) {
+  .container .page {
+    margin-top: 10vh;
+    width: 95%;
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container .page {
+    margin-top: 15vh;
+    width: 90%;
+    height: 80vh;
+  }
+}
+
+.game-header {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 20px;
+  color: white;
+  padding: 10px 15px;
+  background-color: black;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .game-header {
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .game-header {
+    font-size: 6vw;
+  }
+}
+
+.game-header .score,
+.timer,
+.lives {
+  font-weight: bold;
+  color: #39FF14;
+}
+
+.game-area {
+  width: 100%;
+  height: calc(100% - 50px);
+  position: relative;
+}
+
+.character {
+  position: absolute;
+  width: 12vw;
+  height: 12vw;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .character {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .character {
+    width: 25vw;
+    height: 25vw;
+  }
+}
+
+.enemy {
+  background-image: url("image/diddy.png");
+}
+
+.ally {
+  background-image: url("image/lamine.png");
+}
+
+button {
+  font-family: "Arial", sans-serif;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background-color: #39FF14;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background-color: #28d900;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  background-color: #1e9c00;
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.start-page #nextScreenButton {
+  background-color: #2add0a;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+.start-page #nextScreenButton:hover {
+  background-color: #2bc409;
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 6px 10px rgba(184, 183, 183, 0.884);
+}
+
+.start-page #nextScreenButton:active {
+  background-color: #1e9c00;
+  transform: translateX(-50%) translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.288);
+}
+
+.start-page #startGameButton {
+  background-color: #39FF14;
+}
+
+.rules-page #backToStartButton,
+.rules-page #startGameButton {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.rules-page #startGameButton {
+  left: calc(50% + 100px);
+  background-color: #28a745;
+}
+
+.rules-page #backToStartButton {
+  left: calc(50% - 100px);
+  background-color: #dc3545;
+}
+
+
+.victory-page #playAgainButton {
+  background-color: #39FF14;
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+.defeat-page #retryButton {
+  background-color: #dc3545;
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+
+.rules-page button {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-position: top center;
+  }
+
+  .rules-page {
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .rules-page button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background-size: cover;
+  }
+
+  .rules-page {
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .rules-page button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+
+body,
+button,
+img,
+a,
+.game-page,
+.character {
+  cursor: url('./image/cruceta.png') 32 32, default;
+}
+
+.victory-page {
+  color: #1e9c00;
+  text-align: center;
+}
+
+.defeat-page {
+  color: #dc3545;
+  text-align: center;
+}
+
+
+.tuPuntuacionDerrota {
+  color: #ffffff;
+  text-align: center;
+  background-color: #333333;
+  border: 4px solid #dc3545;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+.tuPuntuacionVictoria {
+  color: #ffffff;
+  text-align: center;
+  background-color: #333333;
+  border: 4px solid #39FF14;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: "Jersey 10", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
