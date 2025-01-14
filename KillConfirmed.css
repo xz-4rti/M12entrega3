@@ -1,26 +1,46 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-image: url("image/background.png");
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: "Jersey 10", serif;
+}
+
+/* Container and page layouts */
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .container .page {
-  margin: 0 auto;
-  margin-top: 15vh;
   width: 60vw;
-  max-width: 60vw;
   height: 70vh;
   background-position: center;
   background-size: cover;
   display: none;
-  border-radius: 5%;
+  border-radius: 20px;
   position: relative;
+  margin: 0 auto;
 }
 
+/* Page-specific backgrounds */
 .container .page.start-page {
   background-image: url("image/start.png");
   display: block;
@@ -42,22 +62,7 @@ body {
   background-image: url("image/defeat.png");
 }
 
-@media screen and (max-width: 768px) {
-  .container .page {
-    margin-top: 10vh;
-    width: 95%;
-    height: 70vh;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .container .page {
-    margin-top: 15vh;
-    width: 90%;
-    height: 80vh;
-  }
-}
-
+/* Game header */
 .game-header {
   position: absolute;
   top: 10px;
@@ -66,41 +71,30 @@ body {
   gap: 20px;
   color: white;
   padding: 10px 15px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 10px;
   flex-wrap: wrap;
   justify-content: flex-start;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 32px;
-}
-
-@media screen and (max-width: 768px) {
-  .game-header {
-    font-size: 4vw;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .game-header {
-    font-size: 6vw;
-  }
+  z-index: 10;
 }
 
 .game-header .score,
-.timer,
-.lives {
+.game-header .timer,
+.game-header .lives {
   font-weight: bold;
   color: #39ff14;
 }
 
+/* Game area */
 .game-area {
   width: 100%;
   height: calc(100% - 50px);
   position: relative;
+  margin-top: 50px;
 }
 
+/* Character styles */
 .character {
   position: absolute;
   width: 12vw;
@@ -108,20 +102,11 @@ body {
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-@media screen and (max-width: 768px) {
-  .character {
-    width: 20vw;
-    height: 20vw;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .character {
-    width: 25vw;
-    height: 25vw;
-  }
+.character:hover {
+  transform: scale(1.05);
 }
 
 .enemy {
@@ -132,9 +117,10 @@ body {
   background-image: url("image/lamine.png");
 }
 
+/* Button styles */
 button {
-  font-family: "Arial", sans-serif;
-  font-size: 1.5rem;
+  font-family: "Jersey 10", serif;
+  font-size: 32px;
   padding: 15px 30px;
   border: none;
   border-radius: 10px;
@@ -159,120 +145,131 @@ button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Start page button */
 .start-page #nextScreenButton {
-  background-color: #2add0a;
   position: absolute;
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 15px 30px;
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 32px;
+  background-color: #2add0a;
 }
 
-.start-page #nextScreenButton:hover {
-  background-color: #2bc409;
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 6px 10px rgba(184, 183, 183, 0.884);
-}
-
-.start-page #nextScreenButton:active {
-  background-color: #1e9c00;
-  transform: translateX(-50%) translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.288);
-}
-
-.start-page #startGameButton {
-  background-color: #39ff14;
-}
-
+/* Rules page buttons */
 .rules-page #backToStartButton,
 .rules-page #startGameButton {
   position: absolute;
-  bottom: -70px;
-  left: 50%;
+  bottom: 20px;
   transform: translateX(-50%);
   z-index: 10;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 32px;
-  cursor: pointer;
 }
 
 .rules-page #startGameButton {
-  left: calc(50% + 100px);
+  left: calc(50% + 120px);
   background-color: #28a745;
 }
 
 .rules-page #backToStartButton {
-  left: calc(50% - 100px);
+  left: calc(50% - 120px);
   background-color: #dc3545;
 }
 
+/* Victory/Defeat buttons */
 .victory-page #playAgainButton {
+  margin-top: 20px;
   background-color: #39ff14;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 32px;
 }
 
 .defeat-page #retryButton {
+  margin-top: 20px;
   background-color: #dc3545;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
+}
+
+/* Score displays */
+.tuPuntuacionDerrota,
+.tuPuntuacionVictoria {
+  color: white;
+  text-align: center;
+  background-color: rgba(51, 51, 51, 0.9);
+  padding: 15px 30px;
+  margin: 20px auto;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-size: 32px;
 }
 
-.rules-page button {
-  margin-left: 0;
+.tuPuntuacionVictoria {
+  border: 4px solid #39ff14;
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    background-attachment: scroll;
-    background-position: top center;
-  }
+.tuPuntuacionDerrota {
+  border: 4px solid #dc3545;
+}
 
-  .rules-page {
-    justify-content: flex-end;
-    padding: 10px;
-  }
+/* Audio control */
+.box {
+  --color: white;
+  --size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  aspect-ratio: 1;
+}
 
-  .rules-page button {
-    font-size: 1.2rem;
-    padding: 12px 25px;
+.box .mute,
+.box .voice {
+  position: absolute;
+  fill: var(--color);
+  width: var(--size);
+  height: var(--size);
+}
+
+.box .mute {
+  animation: keyframes-fill 0.5s;
+}
+
+.box .voice {
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+
+.box input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.box input:checked ~ .mute {
+  display: none;
+}
+
+.box input:checked ~ .voice {
+  display: block;
+}
+
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.2);
   }
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    background-size: cover;
-  }
-
-  .rules-page {
-    justify-content: flex-end;
-    padding: 10px;
-  }
-
-  .rules-page button {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
-}
-
+/* Custom cursor */
 body,
 button,
 img,
@@ -282,101 +279,124 @@ a,
   cursor: url("./image/cruceta.png") 32 32, default;
 }
 
-.victory-page {
-  color: #1e9c00;
-  text-align: center;
-}
-
-.defeat-page {
-  color: #dc3545;
-  text-align: center;
-}
-
-.tuPuntuacionDerrota {
-  color: #ffffff;
-  text-align: center;
-  background-color: #333333;
-  border: 4px solid #dc3545;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px auto;
-  display: inline-block;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 32px;
-}
-
-.tuPuntuacionVictoria {
-  color: #ffffff;
-  text-align: center;
-  background-color: #333333;
-  border: 4px solid #39ff14;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px auto;
-  display: inline-block;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 32px;
-}
-
-/* mute button */
-.box {
-  --color: white;
-  --size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  cursor: pointer;
-  font-size: var(--size);
-  user-select: none;
-  fill: var(--color);
-  right: 50px;
-  top: 50px;
-}
-
-.box .mute {
-  position: absolute;
-  animation: keyframes-fill 0.5s;
-}
-
-.box .voice {
-  position: absolute;
-  display: none;
-  animation: keyframes-fill 0.5s;
-}
-
-/* ------ On check event ------ */
-.box input:checked ~ .mute {
-  display: none;
-}
-
-.box input:checked ~ .voice {
-  display: block;
-}
-
-/* ------ Hide the default checkbox ------ */
-.box input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* ------ Animation ------ */
-@keyframes keyframes-fill {
-  0% {
-    transform: rotate(0deg) scale(0);
-    opacity: 0;
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .container .page {
+    width: 70vw;
+    height: 70vh;
   }
 
-  50% {
-    transform: rotate(-10deg) scale(1.2);
+  button {
+    font-size: 24px;
+  }
+
+  .game-header {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container .page {
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .game-header {
+    font-size: 20px;
+    gap: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .character {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+
+  .rules-page #backToStartButton,
+  .rules-page #startGameButton {
+    bottom: -60px;
+  }
+
+  .rules-page #startGameButton {
+    left: calc(50% + 90px);
+  }
+
+  .rules-page #backToStartButton {
+    left: calc(50% - 90px);
+  }
+
+  .tuPuntuacionDerrota,
+  .tuPuntuacionVictoria {
+    font-size: 24px;
+    padding: 12px 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container .page {
+    width: 95vw;
+    height: 80vh;
+  }
+
+  .game-header {
+    display: block;
+    width: 7em;
+    top: -5em;
+    font-size: 16px;
+    right: 5px;
+    left: 5px;
+  }
+
+  .character {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .rules-page #backToStartButton,
+  .rules-page #startGameButton {
+    bottom: -50px;
+  }
+
+  .rules-page #startGameButton {
+    left: calc(50% + 70px);
+  }
+
+  .rules-page #backToStartButton {
+    left: calc(50% - 70px);
+  }
+
+  .tuPuntuacionDerrota,
+  .tuPuntuacionVictoria {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .box {
+    --size: 24px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-height: 600px) {
+  .container .page {
+    height: 85vh;
+    margin-top: 5vh;
+  }
+
+  .start-page #nextScreenButton {
+    bottom: 50px;
   }
 }
